@@ -1,0 +1,15 @@
+======================= Projet Final inf1995 =========================
+============================ Hiver 2018 ==============================
+Equipe: UTOPIA
+Membres:
+	* Gregoire Geffroy
+	* Hamdi Mansour
+	* Jean-Philippe Anctil
+	* Marc-Antoine Jacob
+======================================================================
+
+======================= Librairie et Makefile ========================
+Le code source dans ce dossier utilise la libraire libMagic.a contenue
+dans le dossier ../librarie.
+Pour changer son emplacement, Au début du fichier ./Makefile, il y a une
+variable LIBRARYDIR quidoit contenir le chemin de la librairie

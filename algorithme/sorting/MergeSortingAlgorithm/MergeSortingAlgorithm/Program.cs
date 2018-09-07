@@ -11,17 +11,19 @@ namespace MergeSortingAlgorithm
         static void Main(string[] args)
         {
             // creation d'une liste de n nombre
-            int n = 100;
+            int n = 100000;
             List<int> ensemble = creerEnsembleRandom(n);
             int count = ensemble.Count();
             Console.WriteLine(count);
 
-            afficher(ensemble);
-            Console.WriteLine("");
+            // afficher(ensemble);
+            // Console.WriteLine("");
 
             ensemble = diviser(ensemble);
 
-            afficher(ensemble);
+            // afficher(ensemble);
+
+            verifier(ensemble);
 
             Console.Read();
         }
@@ -107,6 +109,26 @@ namespace MergeSortingAlgorithm
                 ensemble.Add(rnd.Next(n));
             }
             return ensemble;
+        }
+
+        static void verifier(List<int> ensemble)
+        {
+            bool isSorted = true;
+            for (int i = 0; i < ensemble.Count - 1; i++)
+            {
+                if (ensemble[i] > ensemble[i + 1])
+                {
+                    isSorted = false;
+                }
+            }
+            if (isSorted)
+            {
+                Console.WriteLine("the list is sorted");
+            }
+            else
+            {
+                Console.Write("there was an error, the list is not sorted");
+            }
         }
     }
 }

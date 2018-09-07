@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
     public RectTransform ParentPanel;
     public int mapLVL_;
     public int trapDamage_;
+    public SelectedSpellsButton selectedSpellsButton;
     private bool playerTurn_;
 
 
@@ -46,6 +47,15 @@ public class GameController : MonoBehaviour {
             tampon.transform.SetParent(ParentPanel, false);
             tampon.transform.localScale = new Vector3(1, 1, 1);
         }
+        if (!selectedSpellsButton.afficher)
+        {
+            selectedSpellsButton.afficher = true;
+        }
+    }
+
+    public void deleteSelectedCards()
+    {
+        Destroy(tampon);
     }
 
     public void SetGame()

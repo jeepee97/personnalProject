@@ -34,9 +34,4 @@ public class ButtonController : MonoBehaviour {
         }
         Debug.Log("task est appellee");
     }
-
-    public void SeeSelectedSpells()
-    {
-        map_.gameController.SetSelectedCards();
-    }
 }

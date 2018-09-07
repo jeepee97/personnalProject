@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovingCamera : MonoBehaviour {
 
-    public float speed = 4.0f;
+    public float speed;
     private Vector3 mouseOrigin;
     private Vector3 camOrigin;
     private bool isMoving;
@@ -30,7 +30,7 @@ public class MovingCamera : MonoBehaviour {
             Debug.Log("mouse Move : [" + move.x + ", " + move.y + ", " + move.z + "]");
 
             Vector3 moving = new Vector3(mouseOrigin.x - move.x, 0, mouseOrigin.y - move.y);
-            gameObject.transform.position = camOrigin + moving;
+            gameObject.transform.position = camOrigin + speed*moving;
         }
 
 

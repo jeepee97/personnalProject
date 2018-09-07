@@ -31,6 +31,6 @@ public class Unit : MonoBehaviour {
 
     public void SetLVL(int mapLVL)
     {
-        level_ = mapLVL + 1;
+        
     }
 }

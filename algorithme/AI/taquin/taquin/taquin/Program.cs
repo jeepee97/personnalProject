@@ -69,11 +69,11 @@ namespace Taquin
         {
             //on creer le taquin aleatoire par lequel nous allons commencer :
             int size = 3;
-            //taquin = new int[size, size];
-            //SetTaquin(size);
-            int[,] test = { { 6, 0, 3 }, { 7, 1, 4 }, { 5, 8, 2 } };
-            Noeud start = new Noeud(test, null, 0);
-            AfficherTaquin(test);
+            taquin = new int[size, size];
+            SetTaquin(size);
+            //int[,] test = { { 6, 0, 3 }, { 7, 1, 4 }, { 5, 8, 2 } };
+            Noeud start = new Noeud(taquin, null, 0);
+            AfficherTaquin(taquin);
             CalculerHCost3(start);
             Console.Read();
             

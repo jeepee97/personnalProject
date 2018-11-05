@@ -1,5 +1,41 @@
-﻿body {
-  /* Supprimer ces marques de commentaire pour permettre les opérations de défilement et de zoom
-  touch-action: manipulation;
-  */
+﻿/* font */
+h1 {
+    font-family: 'Barlow Condensed', Helvetica, sans-serif;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 15px;
+    transition: font-size 0.25s ease;
+    text-transform: uppercase;
+    color: #bc8420;
+}
+
+/* module style */
+
+body {
+    margin: 0;
+}
+
+.page-header {
+    background-color: #a39e9e;
+    padding: 30px 15px;
+}
+
+.partie1 {
+    background-color: #2d2d2d;
+    padding: 30px 15px;
+}
+
+.partie2 {
+    background-color: #a39e9e;
+    padding: 30px 15px;
+}
+
+.partie3 {
+    background-color: #2d2d2d;
+    padding: 30px 15px;
+}
+
+.partie4 {
+    background-color: #a39e9e;
+    padding: 30px 15px;
 }

@@ -18,7 +18,9 @@ namespace connect4
         public int choisirLigne(Board board)
         {
             Noeud start = new Noeud(board);
-            return alpha(start, 0).getMove();
+            start = alpha(start, 0);
+            Console.WriteLine("AI move value : " + start.getWinRate());
+            return start.getMove();
         }
 
         public static Noeud alpha(Noeud noeud, int it)
@@ -107,7 +109,7 @@ namespace connect4
                     Noeud next = new Noeud(noeud);
                     next.setBoard(j, true);
 
-                    // si on gagne sur ce tour, le meilleur est forcement 100.
+                    // si le joeur gagne sur ce tour, le pire est forcement 0.
                     if (isGameOver(next.getBoard()))
                     {
                         pire = 0;
@@ -116,9 +118,10 @@ namespace connect4
                         break;
                     }
 
-                    // si on gagne pas, alors le meilleur est le meilleur des pires.
+                    // sil ne gagne pas, alors le pire est le pire des meilleurs.
                     else
                     {
+                        // si le nombre diteration est plus petit que 3, alors fait une recurrence
                         if (it < 3)
                         {
                             int valeur = alpha(next, it).getWinRate();
@@ -129,6 +132,7 @@ namespace connect4
                                 retour.setVal(pire, move);
                             }
                         }
+                        // sinon, au donne une valeur au board basee sur le nombre de lignes gagnantes possibles
                         else
                         {
                             int valeur = boardValue2(next.getBoard());
@@ -347,15 +351,25 @@ namespace connect4
                             int count = 0;
                             for (int k = 0; k < 4; k++)
                             {
+                                // calcul dans une ligne de 4, combien il y a de pion appartenant au AI
                                 if (valeur == board.getBoardPos(i, j + k))
                                 {
                                     count++;
                                 }
+                                // si il y a un pion de lautre joueur dans la ligne, au lieu du vide, alors
+                                // la ligne ne vaux rien
+                                else if (board.getBoardPos(i, j + k) != 0)
+                                {
+                                    count = 0;
+                                    break;
+                                }
                             }
+                            // si cest une ligne appartenant au joueur, diminue la valeur du board
                             if (valeur == 1)
                             {
                                 retour -= count * count;
                             }
+                            // si cest au AI, augmente la valeur du board
                             else
                             {
                                 retour += count * count;
@@ -371,6 +385,11 @@ namespace connect4
                                 if (valeur == board.getBoardPos(i + k, j))
                                 {
                                     count++;
+                                }
+                                else if (board.getBoardPos(i + k, j) != 0)
+                                {
+                                    count = 0;
+                                    break;
                                 }
                             }
                             if (valeur == 1)
@@ -389,9 +408,14 @@ namespace connect4
                             int count = 0;
                             for (int k = 0; k < 4; k++)
                             {
-                                if (valeur != board.getBoardPos(i + k, j + k))
+                                if (valeur == board.getBoardPos(i + k, j + k))
                                 {
                                     count++;
+                                }
+                                else if (board.getBoardPos(i + k, j + k) != 0)
+                                {
+                                    count = 0;
+                                    break;
                                 }
                             }
                             if (valeur == 1)
@@ -410,9 +434,14 @@ namespace connect4
                             int count = 0;
                             for (int k = 0; k < 4; k++)
                             {
-                                if (valeur != board.getBoardPos(i + k, j - k))
+                                if (valeur == board.getBoardPos(i + k, j - k))
                                 {
                                     count++;
+                                }
+                                else if (board.getBoardPos(i + k, j - k) != 0)
+                                {
+                                    count = 0;
+                                    break;
                                 }
                             }
                             if (valeur == 1)

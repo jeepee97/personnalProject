@@ -76,6 +76,17 @@ namespace connect4
 
         static bool isGameOver(Board board)
         {
+            // null
+            bool tampon = true;
+            for (int i = 0; i < board.getSize(); i++)
+            {
+                tampon = tampon & (board.getBoardPos(6, i) != 0);
+                if (tampon)
+                {
+                    return true; 
+                }
+            }
+
             for (int i = 0; i < board.getSize(); i++)
             {
                 for (int j = 0; j < board.getSize(); j++)
